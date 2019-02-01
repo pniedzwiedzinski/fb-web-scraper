@@ -9,8 +9,10 @@ browser = webdriver.Chrome()
 browser.get('https://m.facebook.com/login.php')
 email =  browser.find_element_by_id("m_login_email")
 password = browser.find_element_by_id("m_login_password")
-email.send_keys("biuro.tkgf@gmail.com")
-password.send_keys("12345QWERT", Keys.RETURN)
+login = input("Enter fb email: ")
+email.send_keys(login)
+passw = input("Enter fb password: ")
+password.send_keys(passw, Keys.RETURN)
 
 key = input("Search key: ")
 
