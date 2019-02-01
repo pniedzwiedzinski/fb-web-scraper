@@ -11,8 +11,8 @@ pip3 install -r requirements.txt
 python3 main.py
 ```
 
-You will need to install chromedriver
+You may need to install chromedriver
 
 ```bash
-brew install chromedriver
+brew cask install chromedriver
 ```
