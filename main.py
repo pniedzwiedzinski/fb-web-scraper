@@ -1,7 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from yaspin import yaspin, Spinner
-import csv
 import getpass
 
 sp = Spinner(["😸", "😹", "😺", "😻", "😼", "😽", "😾", "😿", "🙀"], 200)
@@ -29,14 +28,13 @@ with yaspin(sp, text="Okno chrome musi być aktywne, patrz na nie!!!"):
         time.sleep(.5)
 
         posts = browser.find_elements_by_class_name("_5rgt")
-        posts_text = []
         for i in posts:
             try:
                 t = i.find_element_by_tag_name("p")
-                posts_text.append(i.text)
+                with open("fake-posts.csv", 'a') as fp:
+                    fp.write("\n---\n")
+                    fp.write(i.text
             except:
                 pass
-        with open("fake-posts.csv", 'a') as fp:
-            spamwriter = csv.writer(fp, delimiter=',')
-            spamwriter.writerow([x[:-16] for x in posts_text])
+        
         browser.execute_script("let posts = document.querySelectorAll('._3drp'); for (i of posts){ console.log(i); i.remove()}")
