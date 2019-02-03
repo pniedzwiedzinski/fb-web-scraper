@@ -33,7 +33,7 @@ with yaspin(sp, text="Okno chrome musi być aktywne, patrz na nie!!!"):
                 t = i.find_element_by_tag_name("p")
                 with open("fake-posts.csv", 'a') as fp:
                     fp.write("\n---\n")
-                    fp.write(i.text
+                    fp.write('\n'.join(i.text.split('\n')[:-1]))
             except:
                 pass
         
