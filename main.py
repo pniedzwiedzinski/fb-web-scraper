@@ -11,7 +11,7 @@ passw = getpass.getpass("Enter fb password: ")
 browser = webdriver.Chrome()
 browser.get('https://m.facebook.com/login.php')
 email =  browser.find_element_by_id("m_login_email")
-password = browser.find_element_by_id("m_login_password")
+password = browser.find_element_by_id("m_login_password") or browser.find_element_by_name("pass")
 email.send_keys(login)
 password.send_keys(passw, Keys.RETURN)
 
@@ -29,7 +29,7 @@ with yaspin(sp, text="Okno chrome musi być aktywne, patrz na nie!!!"):
 
         posts = browser.find_elements_by_class_name("_5rgt")
         for i in posts:
-            if len(i) < 5:
+            if len(i.text) < 5:
                 continue
             try:
                 t = i.find_element_by_tag_name("p")
