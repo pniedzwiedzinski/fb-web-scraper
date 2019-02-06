@@ -29,6 +29,8 @@ with yaspin(sp, text="Okno chrome musi być aktywne, patrz na nie!!!"):
 
         posts = browser.find_elements_by_class_name("_5rgt")
         for i in posts:
+            if len(i) < 5:
+                continue
             try:
                 t = i.find_element_by_tag_name("p")
                 with open("fake-posts.csv", 'a') as fp:
